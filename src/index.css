@@ -1,0 +1,289 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================================================
+   Reusable Tailwind component classes (Navbar + Hero only).
+   Mirrors the original <style type="text/tailwindcss"> block.
+   ========================================================= */
+@layer components {
+    .nav-link {
+        @apply text-[11px] tracking-[2px] uppercase font-semibold text-ink dark:text-[#a0aab4] border-b-2 border-transparent pb-1 transition-all duration-300 hover:text-brand hover:border-brand dark:hover:text-white;
+    }
+    .eyebrow {
+        @apply block text-xs font-bold uppercase tracking-[5px] text-brand mb-4;
+    }
+    .btn-outline-pill {
+        @apply inline-flex items-center justify-center flex-1 min-w-[140px] text-center font-semibold border border-gray-300 dark:border-[#2d3238] rounded-full px-8 py-4 text-ink dark:text-[#a0aab4] transition-all duration-300 hover:bg-brand hover:text-white hover:border-brand dark:hover:text-black;
+    }
+}
+
+/* =========================================================
+   ORIGINAL_STYLES — still required for sections not yet converted
+   (About, Skills, Services, Experience, Certifications, Resume,
+   Contact, Footer, social sidebar, back-to-top button).
+   ========================================================= */
+:root{
+    --color-brand:#e68a2e;
+    --color-dark:#1a1a1a;
+    --color-light:#ffffff;
+    --color-soft:#f8f8f8;
+    --color-soft-bg: rgba(233, 233, 233, 0.33);
+    --color-border:#e5e7eb;
+    --color-gray-border: #d1d5db;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    background-color: var(--color-light);
+    color: var(--color-dark);
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+html { scroll-behavior: smooth; overflow-x: hidden; }
+
+.serif-title { font-family: 'Prata', serif; }
+
+.container-px {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.section-padding { padding-top: 80px; padding-bottom: 80px; }
+
+.section-title {
+    font-size: clamp(32px, 5vw, 60px);
+    line-height: 1.1;
+}
+
+section { border-bottom: 1px solid var(--color-gray-border); }
+#contact, footer { border-bottom: none; }
+
+/* Aside Social Sidebar */
+.social-sidebar {
+    background: rgba(255, 255, 255, 0.1);
+    border-right: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 2rem 1.5rem;
+    border-radius: 0 30px 30px 0;
+    position: fixed;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 60;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.social-icon {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    color: #4b5563;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+
+.social-icon:hover {
+    color: var(--color-brand);
+    transform: translateX(12px) scale(1.3);
+}
+
+/* Back to top button */
+#backToTop {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    z-index: 60;
+    background-color: var(--color-brand);
+    color: #fff;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease;
+    opacity: 0;
+    visibility: hidden;
+    border: none;
+}
+#backToTop.show { opacity: 1; visibility: visible; }
+#backToTop:hover { transform: translateY(-4px); }
+
+/* Skills Card Style */
+.skill-card {
+    background: white;
+    padding: 40px;
+    border-radius: 30px;
+    border: 1px solid #e5e7eb;
+    transition: all 0.3s ease;
+    height: 100%;
+}
+.skill-card:hover { transform: translateY(-5px); border-color: var(--color-brand); }
+.skill-icon { color: var(--color-brand); font-size: 2rem; margin-bottom: 1.5rem; }
+
+/* Timeline Components */
+.timeline-container { position: relative; }
+.timeline-line {
+    position: absolute; left: 50%; transform: translateX(-50%);
+    width: 1px; height: 100%; background-color: var(--color-gray-border);
+}
+.timeline-dot {
+    position: absolute; left: 50%; transform: translateX(-50%);
+    width: 48px; height: 48px; background: #f3f4f6;
+    border: 2px solid var(--color-brand); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--color-brand); z-index: 10;
+}
+
+/* Certifications Section Style */
+.cert-card {
+    background: #fff; padding: 40px; border-radius: 40px;
+    border: 1px solid #e5e7eb; display: flex; flex-direction: column;
+    align-items: center; text-align: center; transition: all 0.3s ease;
+    height: 100%; box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+}
+.cert-card:hover { border-color: var(--color-brand); }
+.cert-icon-container {
+    width: 80px; height: 80px; background-color: var(--color-soft);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    color: var(--color-brand); font-size: 2rem; margin-bottom: 2rem;
+    transition: all 0.3s ease;
+}
+.cert-card:hover .cert-icon-container { background-color: var(--color-brand); color: #fff; }
+
+/* Buttons custom */
+.btn-custom-outline {
+    border: 1px solid #d1d5db; color: var(--color-dark); border-radius: 50px;
+    padding: 1rem 2rem; font-weight: 600; text-decoration: none;
+    transition: all 0.3s; text-align: center; min-width: 140px; display: inline-block;
+}
+.btn-custom-outline:hover { background-color: var(--color-brand); color: #fff; border-color: var(--color-brand); }
+
+.btn-brand-pill {
+    background-color: var(--color-brand); color: #fff; border-radius: 50px;
+    padding: 1.5rem 3rem; font-weight: 700; text-decoration: none;
+    transition: all 0.3s; display: inline-block; border: none;
+}
+.btn-brand-pill:hover { background-color: var(--color-dark); color: #fff; }
+
+.form-custom-input {
+    background: transparent; border: none; border-bottom: 1px solid #4b5563;
+    padding-top: 1rem; padding-bottom: 1rem; color: #ffffff;
+    border-radius: 0; font-size: 18px !important;
+}
+.form-custom-input:focus { background: transparent; box-shadow: none; color: #fff; border-color: var(--color-brand); }
+
+.navbar-toggler { z-index: 1001; }
+.btn-outline-warning:hover { background-color: var(--color-brand) !important; border-color: var(--color-brand) !important; color: #fff !important; }
+
+@media (max-width: 1024px) {
+    .container-px { padding-left: 5%; padding-right: 5%; }
+    .section-padding { padding-top: 150px; padding-bottom: 150px; }
+    .timeline-line { left: 24px; transform: none; }
+    .timeline-dot { left: 24px; transform: translateX(-50%); }
+    .social-sidebar {
+        position: fixed; bottom: 0; top: auto; left: 0; right: 0; transform: none;
+        flex-direction: row; justify-content: space-around; border-radius: 20px 20px 0 0;
+        padding: 10px; background: white; z-index: 1000;
+    }
+}
+
+@media (max-width: 768px) {
+    .section-padding { padding-top: 80px; padding-bottom: 100px; }
+    .navbar-collapse {
+        background: white; padding: 20px; border-top: 1px solid #e5e7eb;
+        border-radius: 0 0 20px 20px; box-shadow: 0 10px 15px rgba(0,0,0,0.05); width: 100%;
+    }
+    .social-sidebar { z-index: 999 !important; }
+}
+
+/* --- DARK MODE (still class-based on <body> for un-migrated sections) --- */
+body.dark-mode { background-color: #0f1113; color: #e9ecef; }
+
+body.dark-mode #home { background-color: #0f1113 !important; }
+
+body.dark-mode .bg-white,
+body.dark-mode .bg-light,
+body.dark-mode .section-padding { background-color: #16181b !important; }
+
+body.dark-mode .skill-card,
+body.dark-mode .service-item,
+body.dark-mode .cert-card,
+body.dark-mode .card {
+    background-color: #1e2125 !important;
+    border: 1px solid #2d3238 !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
+}
+body.dark-mode .skill-card h3,
+body.dark-mode .service-item h3,
+body.dark-mode .cert-card h3 { color: #ffffff !important; }
+
+body.dark-mode .service-item { border-bottom-color: #2d3238 !important; }
+body.dark-mode .service-item:hover { background-color: rgba(255, 193, 7, 0.05) !important; }
+
+body.dark-mode .text-secondary,
+body.dark-mode .sub-hero-text,
+body.dark-mode .max-w-2xl,
+body.dark-mode p { color: #a0aab4 !important; }
+
+body.dark-mode .btn-custom-outline,
+body.dark-mode .btn-outline-dark,
+body.dark-mode .cert-card .btn {
+    border-color: #2d3238 !important;
+    color: #a0aab4 !important;
+}
+body.dark-mode .btn-custom-outline:hover,
+body.dark-mode .btn-outline-dark:hover,
+body.dark-mode .cert-card .btn:hover {
+    background-color: var(--color-brand) !important;
+    color: #000 !important;
+    border-color: var(--color-brand) !important;
+}
+
+body.dark-mode .skill-icon { background-color: transparent !important; color: var(--color-brand) !important; padding: 0 !important; }
+
+body.dark-mode .timeline-container .bg-light { background-color: #1e2125 !important; border-color: #2d3238 !important; }
+body.dark-mode .timeline-dot { background-color: #1e2125 !important; border-color: var(--color-brand) !important; color: var(--color-brand) !important; }
+body.dark-mode .hover-line { background-color: var(--color-brand) !important; }
+
+.nav-link {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    color: #374151;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.dark .nav-link {
+    color: #e5e7eb;
+}
+
+.nav-link:hover {
+    color: #fdba74;
+    text-decoration: none;
+}
+
+/* =========================================================
+   Services section extra styles (originally an inline <style>
+   block scoped to the Services section in the source HTML).
+   ========================================================= */
+.service-item { transition: all 0.4s ease; cursor: default; }
+.service-item:hover { background-color: rgba(var(--color-brand-rgb, 255, 193, 7), 0.03); padding-left: 20px !important; }
+.hover-line { position: absolute; bottom: -1px; left: 0; width: 0; height: 2px; background-color: var(--color-brand); transition: width 0.4s ease; }
+.service-item:hover .hover-line { width: 100%; }
+.text-secondary-50 { opacity: 0.3; }
