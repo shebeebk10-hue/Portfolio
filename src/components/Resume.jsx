@@ -19,49 +19,64 @@ export default function Resume() {
 
   <ul className="dropdown-menu">
 
-    <li>
-      <a
-        className="dropdown-item"
-        href="/resumes/Resume_Frontend_Developer.pdf"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Frontend Developer
-      </a>
-    </li>
 
-    <li>
-      <a
-        className="dropdown-item"
-        href="/resumes/Shebeeb K Resume.pdf"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Python Full Stack Developer
-      </a>
-    </li>
 
-    <li>
-      <a
-        className="dropdown-item"
-        href="/resumes/Resume_Django_Developer.pdf"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Django Developer
-      </a>
-    </li>
+<li>
+  <a
+    className="dropdown-item"
+    href="/resumes/Resume_Frontend_Developer.pdf"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Frontend Developer
+  </a>
+</li>
 
-    <li>
-      <a
-        className="dropdown-item"
-        href="/resumes/Resume_Data_Analyst.pdf"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Data Analyst
-      </a>
-    </li>
+<li>
+  <a
+    className="dropdown-item"
+    href="/resumes/Resume_Python_FullStack_Developer.pdf"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Python Full Stack Developer
+  </a>
+</li>
+
+<li>
+  <a
+    className="dropdown-item"
+    href="/resumes/Resume_Django_Developer.pdf"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Django Developer
+  </a>
+</li>
+
+<li>
+  <a
+    className="dropdown-item"
+    href="/resumes/Resume_Data_Analyst.pdf"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Data Analyst
+  </a>
+</li>
+
+<li>
+  <a
+    className="dropdown-item"
+    href="/resumes/Resume_React_Developer.pdf"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    React Developer
+  </a>
+</li>
+
+
 
   </ul>
 </div>
@@ -77,45 +92,55 @@ export default function Resume() {
 
   <ul className="dropdown-menu">
 
-    <li>
-      <a
-        className="dropdown-item"
-        href="/resumes/Resume_Frontend_Developer.pdf"
-        download
-      >
-        Frontend Developer
-      </a>
-    </li>
+<li>
+  <a
+    className="dropdown-item"
+    href="/resumes/Resume_Frontend_Developer.pdf"
+    download
+  >
+    Frontend Developer
+  </a>
+</li>
 
-    <li>
-      <a
-        className="dropdown-item"
-        href="/resumes/Shebeeb K Resume.pdf"
-        download
-      >
-        Python Full Stack Developer
-      </a>
-    </li>
+<li>
+  <a
+    className="dropdown-item"
+    href="/resumes/Resume_Python_FullStack_Developer.pdf"
+    download
+  >
+    Python Full Stack Developer
+  </a>
+</li>
 
-    <li>
-      <a
-        className="dropdown-item"
-        href="/resumes/Resume_Django_Developer.pdf"
-        download
-      >
-        Django Developer
-      </a>
-    </li>
+<li>
+  <a
+    className="dropdown-item"
+    href="/resumes/Resume_Django_Developer.pdf"
+    download
+  >
+    Django Developer
+  </a>
+</li>
 
-    <li>
-      <a
-        className="dropdown-item"
-        href="/resumes/Resume_Data_Analyst.pdf"
-        download
-      >
-        Data Analyst
-      </a>
-    </li>
+<li>
+  <a
+    className="dropdown-item"
+    href="/resumes/Resume_Data_Analyst.pdf"
+    download
+  >
+    Data Analyst
+  </a>
+</li>
+
+<li>
+  <a
+    className="dropdown-item"
+    href="/resumes/Resume_React_Developer.pdf"
+    download
+  >
+    React Developer
+  </a>
+</li>
 
   </ul>
 </div>
