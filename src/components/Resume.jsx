@@ -20,6 +20,16 @@ export default function Resume() {
   <ul className="dropdown-menu">
 
 
+<li>
+  <a
+    className="dropdown-item"
+    href="/resumes/Resume_Software_Developer.pdf"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Software Developer
+  </a>
+</li>
 
 <li>
   <a
