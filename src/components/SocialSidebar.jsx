@@ -16,7 +16,7 @@ export default function SocialSidebar() {
       <a href="https://wa.me/918921036219" target="_blank" className="social-icon">
         <i className="fa-brands fa-whatsapp"></i>
       </a>
-      <a href="https://instagram.com/shbeebbh" target="_blank" className="social-icon">
+      <a href="https://instagram.com/shbeeh.b" target="_blank" className="social-icon">
         <i className="fa-brands fa-instagram"></i>
       </a>
     </aside>
