@@ -1,109 +1,244 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from "react";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isDark, setIsDark] = useState(false);
-  const initialized = useRef(false);
 
-  // Mirrors the original DOMContentLoaded theme-init logic
+  // Initialize theme
   useEffect(() => {
-    if (initialized.current) return;
-    initialized.current = true;
-
     const html = document.documentElement;
     const body = document.body;
 
-    const currentTheme = localStorage.getItem('theme');
-    if (currentTheme === 'dark') {
-      html.classList.add('dark');
-      body.classList.add('dark-mode');
+    const currentTheme = localStorage.getItem("theme");
+
+    if (currentTheme === "dark") {
+      html.classList.add("dark");
+      body.classList.add("dark-mode");
       setIsDark(true);
     }
   }, []);
 
+  // Theme toggle
   const toggleTheme = () => {
     const html = document.documentElement;
     const body = document.body;
 
-    html.classList.toggle('dark');
-    body.classList.toggle('dark-mode');
+    html.classList.toggle("dark");
+    body.classList.toggle("dark-mode");
 
-    if (html.classList.contains('dark')) {
-      localStorage.setItem('theme', 'dark');
+    if (html.classList.contains("dark")) {
+      localStorage.setItem("theme", "dark");
       setIsDark(true);
     } else {
-      localStorage.setItem('theme', 'light');
+      localStorage.setItem("theme", "light");
       setIsDark(false);
     }
   };
 
-  const closeMenu = () => setMenuOpen(false);
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
 
   const navLinks = [
-    { href: '#home', label: 'Home' },
-    { href: '#projects', label: 'Works & Projects' },
-    { href: '#services', label: 'Services' },
-    { href: '#certifications', label: 'Certifications' },
-    { href: '#contact', label: 'Contact' },
+    { href: "#home", label: "Home" },
+    { href: "#projects", label: "Works & Projects" },
+    { href: "#services", label: "Services" },
+    { href: "#certifications", label: "Certifications" },
+    { href: "#contact", label: "Contact" },
   ];
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-[999] bg-white/90 dark:bg-[#0f1113] backdrop-blur-xl border-b border-gray-200 dark:border-[#2d3238] transition-colors duration-300">
-      <div className="max-w-[1200px] mx-auto px-[5%] lg:px-5 h-20 flex items-center justify-between relative">
+    <nav className="relative z-50 w-full">
+      <div className="flex items-center justify-between">
 
-        <a href="#" className="font-serif text-2xl text-ink dark:text-white no-underline">SK</a>
+        {/* Logo */}
+        <a
+          href="#"
+          className="font-serif text-2xl text-ink dark:text-white no-underline"
+        >
+          SK
+        </a>
 
+        {/* Right side */}
         <div className="flex items-center gap-2">
+
+          {/* Theme Toggle */}
           <button
             id="theme-toggle"
             className="p-2 rounded-full transition-colors"
             aria-label="Toggle theme"
             onClick={toggleTheme}
           >
-            <i id="theme-icon" className={`fa-solid ${isDark ? 'fa-sun' : 'fa-moon'} text-lg text-brand`}></i>
+            <i
+              className={`fa-solid ${
+                isDark ? "fa-sun" : "fa-moon"
+              } text-lg text-brand`}
+            ></i>
           </button>
 
+          {/* Hamburger */}
           <button
             id="menu-toggle"
-            className="md:hidden p-2"
+            className="md:hidden relative w-11 h-11 rounded-full
+                       flex items-center justify-center
+                       transition-all duration-500
+                       hover:bg-black/5 dark:hover:bg-white/10"
             aria-label="Toggle navigation"
             aria-expanded={menuOpen}
             aria-controls="navbarMenu"
             onClick={() => setMenuOpen((v) => !v)}
           >
-            <i className="fa-solid fa-bars-staggered text-2xl text-ink dark:text-white"></i>
+            {/* Hamburger lines */}
+            <span
+              className={`absolute w-5 h-[1.5px] bg-ink dark:bg-white
+                         transition-all duration-500 ease-in-out
+                         ${
+                           menuOpen
+                             ? "rotate-45"
+                             : "-translate-y-[4px]"
+                         }`}
+            ></span>
+
+            <span
+              className={`absolute w-5 h-[1.5px] bg-ink dark:bg-white
+                         transition-all duration-300
+                         ${
+                           menuOpen
+                             ? "opacity-0"
+                             : "opacity-100"
+                         }`}
+            ></span>
+
+            <span
+              className={`absolute w-5 h-[1.5px] bg-ink dark:bg-white
+                         transition-all duration-500 ease-in-out
+                         ${
+                           menuOpen
+                             ? "-rotate-45"
+                             : "translate-y-[4px]"
+                         }`}
+            ></span>
           </button>
         </div>
+      </div>
 
-        {/* Desktop: inline links. Mobile: dropdown panel toggled by #menu-toggle */}
-        <div
-          id="navbarMenu"
-          className={`${menuOpen ? 'flex' : 'hidden'} md:flex flex-col md:flex-row
-            absolute md:static top-full right-5 md:right-auto left-auto md:left-auto
-            w-64 md:w-auto
-            items-end md:items-center
-            text-right md:text-left
-            gap-4 md:gap-9
-            bg-transparent
-            rounded-none
-            shadow-none
-            border-0
-            px-6 py-5 md:px-0 md:py-0`}
-        >
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              onClick={closeMenu}
-              className="nav-link relative group text-gray-700 dark:text-gray-200 no-underline hover:no-underline hover:text-orange-300 transition-colors duration-300"
-            >
-              {link.label}
-              <span className="absolute -bottom-[0.1px] left-0 w-full h-[2px] bg-orange-300
-                                scale-x-0 origin-right transition-all duration-700 ease-in-out
-                                group-hover:scale-x-100"></span>
-            </a>
-          ))}
+      {/* Mobile Menu */}
+      <div
+        id="navbarMenu"
+        className={`
+          md:hidden absolute top-full right-0 mt-4
+          w-[min(85vw,360px)]
+          overflow-hidden
+          rounded-2xl
+          bg-white/95 dark:bg-neutral-900/95
+          backdrop-blur-xl
+          shadow-xl
+          border border-black/5 dark:border-white/10
+          transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]
+          origin-top-right
+          ${
+            menuOpen
+              ? "opacity-100 scale-100 translate-y-0 pointer-events-auto"
+              : "opacity-0 scale-95 -translate-y-3 pointer-events-none"
+          }
+        `}
+      >
+        <div className="px-7 py-7">
+
+          <div className="flex flex-col items-end gap-1">
+            {navLinks.map((link, index) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={closeMenu}
+                style={{
+                  transitionDelay: menuOpen
+                    ? `${index * 70}ms`
+                    : "0ms",
+                }}
+                className={`
+                  relative
+                  w-full
+                  text-right
+                  py-3
+                  text-lg
+                  font-medium
+                  text-gray-700
+                  dark:text-gray-200
+                  no-underline
+                  transition-all
+                  duration-500
+                  ease-out
+                  hover:text-orange-300
+                  ${
+                    menuOpen
+                      ? "opacity-100 translate-x-0"
+                      : "opacity-0 translate-x-5"
+                  }
+                `}
+              >
+                {link.label}
+
+                {/* Animated underline */}
+                <span
+                  className="
+                    absolute
+                    right-0
+                    bottom-1
+                    h-[1px]
+                    w-0
+                    bg-orange-300
+                    transition-all
+                    duration-500
+                    group-hover:w-full
+                  "
+                ></span>
+              </a>
+            ))}
+          </div>
+
         </div>
+      </div>
+
+      {/* Desktop Navigation */}
+      <div className="hidden md:flex items-center justify-end gap-9 mt-0">
+        {navLinks.map((link) => (
+          <a
+            key={link.href}
+            href={link.href}
+            className="
+              nav-link
+              relative
+              group
+              text-gray-700
+              dark:text-gray-200
+              no-underline
+              hover:no-underline
+              hover:text-orange-300
+              transition-colors
+              duration-300
+            "
+          >
+            {link.label}
+
+            <span
+              className="
+                absolute
+                -bottom-[0.1px]
+                left-0
+                w-full
+                h-[2px]
+                bg-orange-300
+                scale-x-0
+                origin-right
+                transition-all
+                duration-700
+                ease-in-out
+                group-hover:scale-x-100
+              "
+            ></span>
+          </a>
+        ))}
       </div>
     </nav>
   );
